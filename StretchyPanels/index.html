@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Stretchy Panels</title>
+  <style>
+    /*
+      These styles are just for show.
+    */
+    * {
+      box-sizing: border-box;
+      font-family: Arial, Helvetica, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: #404548;
+      padding: 20px;
+    }
+
+    .legend {
+      font-size: 1.5rem;
+      margin-top: 20px;
+      color: #d9d9d9;
+    }
+
+    .legend__panels,
+    .legend__panel-container,
+    .legend__panel {
+      align-items: center;
+      display: flex;
+      margin-top: 10px;
+    }
+
+    .square {
+      height: 30px;
+      width: 30px;
+      margin-right: 5px;
+    }
+
+    .square--panels {
+      background-color: pink;
+    }
+
+    .square--panel-container {
+      background-color: orange;
+    }
+
+    .square--panel {
+      background-color: red;
+    }
+
+    h1,
+    .intro {
+      color: #d9d9d9;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    h4 {
+      margin-bottom: 10px;
+    }
+
+    .panel-header__text {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .monospace {
+      font-family: monospace;
+      font-size: 1.1rem;
+      background-color: #404548;
+      color: #ffffff;
+      padding: 2px 4px;
+      border-radius: 3px;
+    }
+
+    .author-text {
+      font-size: 1rem;
+    }
+  </style>
+  <style>
+    /*
+      Copy these styles into your project to use panels
+    */
+    .panels {
+      border: 8px solid pink;
+      display: flex;
+      flex-flow: row wrap;
+    }
+
+    .panel-container {
+      display: flex;
+      border: 8px solid orange;
+      flex: auto;
+    }
+
+    .panel-container:first-child {
+      margin-right: 5px;
+      width: calc(50% - 5px)
+    }
+
+    .panel-container:nth-child(2) {
+      margin-left: 5px;
+      width: calc(50% - 5px)
+    }
+
+    .panel-container:last-child {
+      margin-top: 10px;
+      width: 100%;
+    }
+
+    .panel {
+      background-color: #ffffff;
+      border: 8px solid red;
+      width: 100%;
+      flex: auto;
+    }
+
+    .panel-header {
+      background-color: lightgrey;
+      height: 40px;
+      padding: 10px;
+    }
+
+    .panel-body {
+      padding: 10px;
+      line-height: 25px;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Stretchy Panels <span class="author-text">By Steve</span></h1>
+  <p class="intro">Simple panel components that use flexbox to maintain a consistent height</p>
+  <div class="panels">
+    <!-- Panel 1-->
+    <div class="panel-container">
+      <div class="panel">
+        <div class="panel-header">
+          <div class="panel-header__text">50% Fixed-Width Panel</div>
+        </div>
+        <div class="panel-body">
+          <p>You can fix the width of a panel via the <span class="monospace">.panel-container</span> class.</p>
+          <p>These two panels have a width of 50%, minus their left and right margins (achieved using <span class="monospace">calc()</span>).</p>
+          <p>
+            If you do not set a width and are planning on using <span class="monospace">flex-grow</span>, you will
+likely see some weird behavior as the width of your content will be used to calculate the rate of <span class="monospace">flex-grow</span>.
+          </p>
+          <p></p>
+          <p>You can make things more flexible by setting <span class="monospace">flex-basis</span> instead of <span class="monospace">width</span>, it depends on your
+            needs.</p>
+        </div>
+      </div>
+    </div>
+    <!-- Panel 2-->
+    <div class="panel-container">
+      <div class="panel">
+        <div class="panel-header">
+          <div class="panel-header__text">50% Fixed-Width Panel</div>
+        </div>
+        <div class="panel-body">
+          <p>Stretched as tall as my neighbor to the left.</p>
+        </div>
+      </div>
+    </div>
+    <!-- Panel 3-->
+    <div class="panel-container">
+      <div class="panel">
+        <div class="panel-header">
+          <div class="panel-header__text">100% Wide Panel</div>
+        </div>
+        <div class="panel-body">
+          <p>This panel Has a width of 100%</p>
+          <p>Causing it to wrap to the next line</p>
+          <p>Because <span class="monospace">.panels</span> is set to <span class="monospace">flex-flow: row wrap</span></p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="legend">
+    <div class="legend__panels">
+      <div class="square square--panels"></div>
+      <div>.panels</div>
+    </div>
+    <div class="legend__panel-container">
+      <div class="square square--panel-container"></div>
+      <div>.panel-container</div>
+    </div>
+    <div class="legend__panel">
+      <div class="square square--panel"></div>
+      <div>.panel</div>
+    </div>
+  </div>
+</body>
+
+</html>
